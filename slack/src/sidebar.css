@@ -4,6 +4,11 @@
     max-width: 260px;
     color: white;
 }
+.sidebar > hr{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #49274b;
+}
 .sidebar_header{
     display: flex;
     border: 1px solid #49274b;

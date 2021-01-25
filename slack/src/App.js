@@ -1,6 +1,6 @@
 import React from 'react'
-import Header from "./components/Header.js";
-import Sidebar from "./components/siderbar";
+import Header from "./Header.js";
+import Sidebar from "./siderbar";
 
 
 import "./App.css"
