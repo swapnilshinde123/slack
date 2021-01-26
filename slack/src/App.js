@@ -1,8 +1,6 @@
 import React from 'react'
 import Header from "./Header.js";
 import Sidebar from "./siderbar";
-
-
 import "./App.css"
 function App() {
     return (
