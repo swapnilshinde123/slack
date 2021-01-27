@@ -55,7 +55,7 @@ function Siderbar() {
             <hr/>
             <SidebarOption Icon={AddIcon} addChannelOption title="Add  Channels" />
               {channels.map((channel) =>(
-                  <SidebarOption title ={channel.name} />
+                  <SidebarOption title ={channel.name} id={channel.id} />
               ))}
         </div>
     )
