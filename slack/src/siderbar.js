@@ -1,4 +1,4 @@
-import React ,{useState} from 'react'
+import React ,{useState,useEffect} from 'react';
 import "./sidebar.css";
 import CreateIcon from '@material-ui/icons/Create';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
@@ -13,24 +13,22 @@ import FileCopyIcon from '@material-ui/icons/FileCopy';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import AddIcon from '@material-ui/icons/Add';
-import db from "./firebase"
-function siderbar() {
-    const [Channels , setChannels] = useState([])
+import db from "./firebase";
+function Siderbar() {
+    const [channels , setChannels] = useState([]);
+    
+    useEffect(() =>{
+        //run thid code  once when  the  sidebar component  loads
+        db.collection('rooms').onSnapshot((sanpshot) =>(
+            setChannels(
+                sanpshot.docs.map((doc)=>({
+                    id:doc.id,
+                   name:doc.data().name,
+                }))
+            )
+        ))
+    },[]);
 
-
-    useEffect(() => {
-       //run thid code  once when  the  sidebar component  loads
-       db.callection("rooms").onSnapshot(sanpshot =>(
-           setChannels(
-               sanpshot.docs.map(doc=>({
-                   id:doc.id
-                   name:doc.data().name
-               }))
-
-           )
-       ))
-
-    }, [])
     return (
         <div className="sidebar">
             <div className="sidebar_header">
@@ -56,8 +54,11 @@ function siderbar() {
             <SidebarOption Icon={ExpandMoreIcon} title="Channels" />
             <hr/>
             <SidebarOption Icon={AddIcon} addChannelOption title="Add  Channels" />
+              {channels.map((channel) =>(
+                  <SidebarOption title ={channel.name} />
+              ))}
         </div>
     )
 }
 
-export default siderbar
+export default Siderbar
