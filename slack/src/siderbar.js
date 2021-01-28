@@ -14,9 +14,10 @@ import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import AddIcon from '@material-ui/icons/Add';
 import db from "./firebase";
+import { useStateValue } from "./stateprovider";
 function Siderbar() {
     const [channels , setChannels] = useState([]);
-    
+    const [{ user }] = useStateValue();
     useEffect(() =>{
         //run thid code  once when  the  sidebar component  loads
         db.collection('rooms').onSnapshot((sanpshot) =>(
@@ -36,7 +37,7 @@ function Siderbar() {
                     <h2>Developer</h2>
                     <h3>
                         <FiberManualRecordIcon />
-                           Swapnil Shinde
+                        {user?.displayName}
                    </h3>
                 </div>
                 <CreateIcon />
@@ -55,7 +56,7 @@ function Siderbar() {
             <hr/>
             <SidebarOption Icon={AddIcon} addChannelOption title="Add  Channels" />
               {channels.map((channel) =>(
-                  <SidebarOption title ={channel.name} id={channel.id} />
+                  <SidebarOption  title ={channel.name} id={channel.id} />
               ))}
         </div>
     )
