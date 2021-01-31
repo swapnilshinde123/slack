@@ -6,6 +6,7 @@ import "./App.css";
 import Login from"./Login"
 import {useStateValue } from "./stateprovider";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
 function App() {
     const [{ user }, dispatch] = useStateValue();
     return (
