@@ -7,6 +7,7 @@ import db from "./firebase";
 import Message from "./Message";
 import ChatInput from "./ChatInput";
 
+
 function Chat() {
     const { roomId } = useParams();
     const [roomDetails, setRoomDetails] = useState(null);
