@@ -22,6 +22,7 @@
 .chat_headerRight >p{
     display: flex;
     align-items: center;
+    
     font-size: 14px;
 }
 .chat_headerRight >p >.MuiSvgIcon-root{

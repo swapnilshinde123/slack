@@ -2,6 +2,7 @@
 import React from "react";
 import "./Message.css";
 
+
 function Message({ messages, timestamp, user, userImage }) {
   return (
     <div className="message">
